@@ -11,16 +11,23 @@
 
 //Step-1
 document.getElementById('btn-deposit').addEventListener('click', function(){
-
+    
     //Step-2
     const depositInput = document.getElementById('deposit-input');
     const newDepositAmountString = depositInput.value;
     const newDepositAmount = parseFloat(newDepositAmountString);
-
+    
+    //Step-7: Clear value
+    depositInput.value = '';
+    if(isNaN(newDepositAmount)){
+        alert('Please provide a number');
+        return
+    }
     //step-3
     const oldDepositAmount = document.getElementById('deposit-update');
     const previosDepositTotalString = oldDepositAmount.innerText;
     const previosDepositTotal = parseFloat(previosDepositTotalString);
+
     //step-4
     const currentDepositAmount = previosDepositTotal + newDepositAmount;
     oldDepositAmount.innerText = currentDepositAmount;
@@ -34,6 +41,4 @@ document.getElementById('btn-deposit').addEventListener('click', function(){
     //Step-6
     const newTotalAmount = previusTotal + newDepositAmount;
     updateTotal.innerText = newTotalAmount;
-    //Step-7: Clear value
-    depositInput.value = '';
 })
